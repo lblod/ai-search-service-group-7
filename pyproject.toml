@@ -90,3 +90,8 @@ convention = 'google'
 quote-style = 'single'
 indent-style = 'space'
 docstring-code-format = false
+
+[tool.pytest.ini_options]
+log_cli = true
+log_cli_level = "WARNING"
+testpaths = ["tests", "src/aisearch"]

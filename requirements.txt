@@ -14,3 +14,4 @@ tqdm
 
 # dev requirements
 pre-commit==3.8.*
+pytest
