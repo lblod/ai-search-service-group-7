@@ -1,3 +1,4 @@
+# ruff:noqa:E501
 QUESTION_TO_QUERY_PROMPT = """You are an AI assistant specialized in transforming dutch natural language questions to dutch queries.
 You can use the following operators:
 - `OR`: or-operator, term1 OR term2

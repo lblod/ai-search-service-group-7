@@ -1,8 +1,6 @@
-from whoosh.fields import Schema
 from pydantic import BaseModel
-from whoosh.fields import Schema, TEXT, ID
 from whoosh.analysis import StemmingAnalyzer
-
+from whoosh.fields import ID, TEXT, Schema
 
 ID_KEY = 'id'
 PRODUCT_NAME_KEY = 'product_name'
@@ -11,11 +9,11 @@ LOCATION_KEY = 'location'
 
 
 CATALOG_SCHEMA = Schema(
-        id=ID(stored=True),
-        product_name=TEXT(stored=True),
-        description=TEXT(stored=True, analyzer=StemmingAnalyzer()),
-        location=TEXT(stored=True),
-    )
+    id=ID(stored=True),
+    product_name=TEXT(stored=True),
+    description=TEXT(stored=True, analyzer=StemmingAnalyzer()),
+    location=TEXT(stored=True),
+)
 
 # this will be used by the llm to understand the schema of the data
 CATALOG_SCHEMA_DESCRIPTIONS = {
@@ -28,7 +26,7 @@ CATALOG_SCHEMA_DESCRIPTIONS = {
 
 ALL_SEARCH_FIELDS = (PRODUCT_NAME_KEY, DESCRIPTION_KEY, LOCATION_KEY)
 
+
 class SearchResult(BaseModel):
     product_name: str
     location: str
-    
