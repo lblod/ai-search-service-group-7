@@ -8,5 +8,6 @@ def test_answer():
     response = answer(
         question='hoe lang is een voorlopig rijbewijs geldig?', results_data=results
     )
-
-    print(response)
+    # right answer is : Een voorlopig rijbewijs is 18 maanden of 36 maanden geldig.
+    assert '18 maand' in response
+    assert '36 maand' in response
