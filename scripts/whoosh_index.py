@@ -1,6 +1,7 @@
 from pathlib import Path
 
 import pandas as pd
+from tqdm import tqdm
 from whoosh.index import create_in
 
 from aisearch.schema import (
@@ -16,15 +17,19 @@ from aisearch.schema import (
     URL,
 )
 
+# paths
 DATA_DIR = Path(__file__).parent.parent / 'data'
 INDEX_DIR = DATA_DIR / 'index'
 INDEX_DIR.mkdir(exist_ok=True, parents=True)
 PROD_CATALOG_CSV = DATA_DIR / 'producten_en_diensten_2024-09-13_21-47-37.csv'
 
+# read the product catalog csv file
 df = pd.read_csv(PROD_CATALOG_CSV, encoding='MacRoman')
+
+# add an id field
 df['id'] = range(1, len(df) + 1)
 
-
+# do a subselection of the data columns
 df_docs = df[
     [
         'id',
@@ -38,6 +43,8 @@ df_docs = df[
         'Product id',
     ]
 ]
+
+# rename the data columns following the index schema
 df_docs = df_docs.rename(
     columns={
         'id': ID_KEY,
@@ -51,20 +58,20 @@ df_docs = df_docs.rename(
         'Product id': PRODUCT_ID,
     }
 )
-# remove stuff between brackets from location
+
+# remove stuff between brackets from location column
 df_docs['location'] = df_docs['location'].str.replace(r'\s*\(.*?\)', '', regex=True)
 
-print(df_docs.head())
-print(df_docs[:3].to_dict(orient='index'))
+# some fields are nan, replace them by empty strings, otherwise whoosh complains
+df_docs = df_docs.fillna('')
+
+# convert the dataframe into documents (list of dicts)
 docs = list(df_docs.to_dict(orient='index').values())
 
-# print(docs)
-
-schema = CATALOG_SCHEMA
-
-ix = create_in(INDEX_DIR, schema)
-writer = ix.writer()
-for doc in docs:
+# create an index and add documents
+index = create_in(INDEX_DIR, CATALOG_SCHEMA)
+writer = index.writer()
+for doc in tqdm(docs):
     try:
         writer.add_document(
             id=str(doc[ID_KEY]),
@@ -77,9 +84,8 @@ for doc in docs:
             url=doc[URL],
             product_id=doc[PRODUCT_ID],
         )
-    except Exception:
-        pass
-        print('This product item has been skipped')
+    except Exception as exc:
+        # this should not happen, but at least it won't fail our index creation
+        print(f'This product item has been skipped: {doc[ID_KEY]}')
+        print(exc)
 writer.commit()
-
-# print(dir(writer))

@@ -10,6 +10,7 @@ whoosh==2.7.4
 
 # script requirements
 pandas==2.2.3
+tqdm
 
 # dev requirements
 pre-commit==3.8.*
