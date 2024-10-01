@@ -14,7 +14,6 @@ PARSER = MultifieldParser(ALL_SEARCH_FIELDS, INDEX.schema)
 
 def search(query: str, limit: int = 10):
     query = PARSER.parse(query)
-    print(query)
 
     with INDEX.searcher() as searcher:
         results = searcher.search(query, limit=limit)
