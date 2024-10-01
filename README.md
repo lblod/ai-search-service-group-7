@@ -12,4 +12,6 @@ source .venv/bin/activate
 python -m pip install -U pip wheel
 # install requirements
 python -m pip install -r requirements.txt
+# setup pre-commit hooks
+pre-commit install
 ```
