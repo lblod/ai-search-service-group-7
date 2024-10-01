@@ -15,6 +15,11 @@ marktplaats in leuven
 Output:
 markt AND location:leuven
 
+Input:
+ik wil een voorlopig rijbewijs aanvragen in lummen
+Output:
+"voorlopig rijbewijs" AND location:lummen
+
 # Question to be translated into a query (use dutch to answer):
 Input:
 {question}
