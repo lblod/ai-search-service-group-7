@@ -9,4 +9,3 @@ def test_search():
     query = '"voorlopig rijbewijs" AND location:aarschot'
     results = search(query=query, limit=20)
     assert len(results) == 2
-    print()
