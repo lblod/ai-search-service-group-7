@@ -1,7 +1,7 @@
 from langchain_core.prompts import PromptTemplate
 from langchain_ollama import OllamaLLM
-from prompts import QUESTION_TO_QUERY_PROMPT
 
+from aisearch.prompts import QUESTION_TO_QUERY_PROMPT
 from aisearch.schema import CATALOG_SCHEMA_DESCRIPTIONS
 
 # setup the llm model
