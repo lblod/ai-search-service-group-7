@@ -1,3 +1,4 @@
+import os
 from pathlib import Path
 
 from whoosh.index import open_dir
@@ -5,8 +6,7 @@ from whoosh.qparser import MultifieldParser
 
 from aisearch.schema import ALL_SEARCH_FIELDS
 
-DATA_DIR = Path(__file__).parent.parent.parent / 'data'
-INDEX_DIR = DATA_DIR / 'index'
+INDEX_DIR = Path(os.environ.get('WHOOSH_INDEX_PATH', '/data/index'))
 INDEX = open_dir(INDEX_DIR)
 
 PARSER = MultifieldParser(ALL_SEARCH_FIELDS, INDEX.schema)
