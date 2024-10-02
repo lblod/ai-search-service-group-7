@@ -12,11 +12,11 @@ INDEX = open_dir(INDEX_DIR)
 PARSER = MultifieldParser(ALL_SEARCH_FIELDS, INDEX.schema)
 
 
-def search_for_products(query: str, limit: int = 10):
+def search_for_products(query: str, result_limit: int = 10):
     query = PARSER.parse(query)
 
     with INDEX.searcher() as searcher:
-        results = searcher.search(query, limit=limit)
+        results = searcher.search(query, limit=result_limit)
 
         results_data = []
         for result in results:
