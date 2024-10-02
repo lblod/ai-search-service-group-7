@@ -3,10 +3,11 @@ from langchain_ollama import OllamaLLM
 
 from aisearch.prompts import QUESTION_TO_QUERY_PROMPT
 from aisearch.schema import CATALOG_SCHEMA_DESCRIPTIONS
+from aisearch.cfg import OLLAMA_ENDPOINT
 
 
 def question_to_query(question: str) -> str:
-    model = OllamaLLM(model='mistral', temperature=0.0, max_tokens=512)
+    model = OllamaLLM(model='mistral', temperature=0.0, max_tokens=512, base_url=OLLAMA_ENDPOINT)
     prompt = PromptTemplate(
         template=QUESTION_TO_QUERY_PROMPT,
         input_variables=['question'],
