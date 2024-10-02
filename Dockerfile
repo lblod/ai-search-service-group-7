@@ -1,2 +1,2 @@
-FROM semtech/mu-python-template:2.0.0-beta.2
+FROM lblod/hackathon-ai-7-python-template
 LABEL maintainer="ruben.de.facq@redpencil.io"

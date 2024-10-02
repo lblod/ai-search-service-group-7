@@ -1,7 +1,3 @@
-import sys
-
-sys.path.append('./src')
-
 from aisearch.main import perform_ai_search
 
 
