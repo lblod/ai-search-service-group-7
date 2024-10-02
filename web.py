@@ -1,3 +1,4 @@
+from flask import request, jsonify
 from aisearch.main import perform_ai_search
 
 
