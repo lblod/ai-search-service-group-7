@@ -1,13 +1,15 @@
 from langchain_core.prompts import PromptTemplate
 from langchain_ollama import OllamaLLM
 
+from aisearch.cfg import OLLAMA_ENDPOINT
 from aisearch.prompts import QUESTION_TO_QUERY_PROMPT
 from aisearch.schema import CATALOG_SCHEMA_DESCRIPTIONS
-from aisearch.cfg import OLLAMA_ENDPOINT
 
 
 def question_to_query(question: str) -> str:
-    model = OllamaLLM(model='mistral', temperature=0.0, max_tokens=512, base_url=OLLAMA_ENDPOINT)
+    model = OllamaLLM(
+        model='mistral', temperature=0.0, max_tokens=512, base_url=OLLAMA_ENDPOINT
+    )
     prompt = PromptTemplate(
         template=QUESTION_TO_QUERY_PROMPT,
         input_variables=['question'],
@@ -19,6 +21,7 @@ def question_to_query(question: str) -> str:
 
 if __name__ == '__main__':
     questions = [
+        'hoeveel kost een voorlopig rijbewijs in aarschot',
         'ik wil een marktplaats in leuven',
         'ik heb een voorlopig rijbewijs nodig in aarschot',
     ]
