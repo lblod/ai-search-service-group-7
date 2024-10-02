@@ -11,6 +11,7 @@ SEARCH_TERM_KEY = 'search_term'
 CONDITIONS = 'conditions'
 URL = 'url'
 PRODUCT_ID = 'product_id'
+COSTS = 'costs'
 
 CATALOG_SCHEMA = Schema(
     id=ID(stored=True),
@@ -22,6 +23,7 @@ CATALOG_SCHEMA = Schema(
     conditions=TEXT(stored=True),
     url=TEXT(stored=True),
     product_id=TEXT(stored=True),
+    costs=TEXT(stored=True)
 )
 
 # this will be used by the llm to understand the schema of the data
@@ -38,6 +40,7 @@ CATALOG_SCHEMA_DESCRIPTIONS = {
         'These are conditions that someone must meet in order to use this product'
     ),
     URL: 'This is the URL where the product can be found',
+    COSTS: 'This is the price of the product',
 }
 
 ALL_SEARCH_FIELDS = (
@@ -49,6 +52,7 @@ ALL_SEARCH_FIELDS = (
     SEARCH_TERM_KEY,
     CONDITIONS,
     URL,
+    COSTS,
 )
 
 

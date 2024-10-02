@@ -15,6 +15,7 @@ from aisearch.schema import (
     SEARCH_TERM_KEY,
     TARGET_GROUP,
     URL,
+    COSTS
 )
 
 # paths
@@ -41,6 +42,7 @@ df_docs = df[
         'Voorwaarden',
         'Bekijk in IPDC',
         'Product id',
+        'Kosten'
     ]
 ]
 
@@ -56,6 +58,7 @@ df_docs = df_docs.rename(
         'Voorwaarden': CONDITIONS,
         'Bekijk in IPDC': URL,
         'Product id': PRODUCT_ID,
+        'Kosten' : COSTS,
     }
 )
 
@@ -83,6 +86,7 @@ for doc in tqdm(docs):
             conditions=doc[CONDITIONS],
             url=doc[URL],
             product_id=doc[PRODUCT_ID],
+            costs=doc[COSTS]
         )
     except Exception as exc:
         # this should not happen, but at least it won't fail our index creation
