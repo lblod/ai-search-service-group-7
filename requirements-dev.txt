@@ -1,0 +1,11 @@
+# install local package
+-r requirements.txt
+
+# script requirements
+pandas==2.2.3
+tqdm
+requests
+
+# dev requirements
+pre-commit==3.8.*
+pytest
