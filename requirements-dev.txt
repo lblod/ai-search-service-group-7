@@ -1,6 +1,9 @@
 # install local package
 -r requirements.txt
 
+# local install of the package
+-e ./src --config-settings editable_mode=compat
+
 # script requirements
 pandas==2.2.3
 tqdm
