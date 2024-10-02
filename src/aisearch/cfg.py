@@ -1,0 +1,1 @@
+OLLAMA_ENDPOINT = 'http://hackathon-ai-7.s.redhost.be:11434/'
