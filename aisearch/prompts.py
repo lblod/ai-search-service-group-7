@@ -4,7 +4,7 @@ You can use the following operators:
 - `OR`: or-operator, term1 OR term2
 - `AND`: and-operator, term1 AND term2
 - `"`: proximity search, "term1 term2"
-- <field_name>:<keywords>, "location:<location1>"
+- <field_name>:<keywords>, "location:<location1>" -> only use this for the location field, not for others
 
 # Here is the schema of the database:
 {schema}
@@ -19,6 +19,11 @@ Input:
 ik wil een voorlopig rijbewijs aanvragen in lummen
 Output:
 "voorlopig rijbewijs" AND location:lummen
+
+Input:
+hoeveel kost een voorlopig rijbewijs in aarschot
+Output:
+"voorlopig rijbewijs" AND location:aarschot
 
 # Question to be translated into a query (use dutch to answer):
 Input:

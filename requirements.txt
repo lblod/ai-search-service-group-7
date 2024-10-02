@@ -1,6 +1,3 @@
-# install local package
--e ./src --config-settings editable_mode=compat
-
 # fix dependencies
 langchain-ollama==0.2.0
 langchain==0.3.1
