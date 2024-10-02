@@ -1,1 +1,3 @@
-OLLAMA_ENDPOINT = 'http://hackathon-ai-7.s.redhost.be:11434/'
+import os
+
+LLAMA_ENDPOINT = os.environ.get('LLAMA_ENDPOINT', 'http://ollama:11434/')
