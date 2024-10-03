@@ -31,3 +31,11 @@ def perform_ai_search(
         sources.append(source)
 
     return answer, sources, query
+
+
+if __name__ == '__main__':
+    question = 'hoeveel kost een voorlopig rijbewijs in aarschot'
+    answer, sources, query = perform_ai_search(question=question)
+    print(f'answer: {answer}')
+    print(f'query: {query}')
+    print(f'sources:\n{sources}')
